@@ -93,6 +93,8 @@ void list(int** numbers, unsigned int* size) {
     for (int i = 1; i < *size; i++) {
         printf(" %d", (*numbers)[i]);
     }
+
+    printf("\n");
 }
 
 void abstract(int** numbers, unsigned int* size) {
@@ -106,8 +108,7 @@ void abstract(int** numbers, unsigned int* size) {
 
     // Usa soma para calcular media
     media = (float) soma / (float) *size;
-
-    printf("%ld %lf\n", soma, media);
+    printf("Soma = %ld, Média = %.2lf\n", soma, media);
 }
 
 void sort(int** numbers, unsigned int* size) {
