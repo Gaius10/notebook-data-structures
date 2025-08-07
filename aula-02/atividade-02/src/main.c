@@ -11,6 +11,7 @@ int main() {
         return 1;
     }
 
+    // Le todos numeros
     numbers = (int *) malloc(sizeof(int) * n);
     for (int i = 0; i < n; i++) {
         if (scanf("%d", &numbers[i]) != 1) {
@@ -31,13 +32,19 @@ int main() {
         return 1;
     }
 
+    // Realoca (passo desnecessario, poderia ter alocado n + 1 la
+    // no inicio)
     numbers = realloc(numbers, sizeof(int) * (n + 1));
 
+    // Shifta todos numeros para a direita
     for (int i = n; i > p; i--) {
         numbers[i] = numbers[i-1];
-        numbers[i-1] = x;
     }
 
+    // Insere novo numero
+    numbers[p] = x;
+
+    // Printa tudo
     printf("%d", numbers[0]);
     for (int i = 1; i < n + 1; i++) {
         printf(" %d", numbers[i]);
