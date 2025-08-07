@@ -13,7 +13,7 @@ int main() {
 
     numbers = (int *) malloc(sizeof(int) * n);
     for (int i = 0; i < n; i++) {
-        if (scanf("%d", &numbers[i])) {
+        if (scanf("%d", &numbers[i]) != 1) {
             printf("Erro ao ler número %d.\n", i);
             return 1;
         }
