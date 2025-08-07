@@ -33,7 +33,7 @@ int main() {
 
     numbers = realloc(numbers, sizeof(int) * (n + 1));
 
-    for (int i = n+1; i >= p; i--) {
+    for (int i = n; i > p; i--) {
         numbers[i] = numbers[i-1];
         numbers[i-1] = x;
     }
