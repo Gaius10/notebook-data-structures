@@ -10,10 +10,7 @@
 #define SORT 5
 #define EXIT 6
 
-#define LIST_MAX_SIZE 10000
-
-void clear_buffer();
-
+// Uma função por comando
 void add(int** numbers, unsigned int* size);
 void pop(int** numbers, unsigned int* size);
 void list(int** numbers, unsigned int* size);
@@ -26,6 +23,7 @@ int main() {
     int* numbers = NULL;
 
     do {
+        // Switch para definir qual a operação desejada
         switch (op) {
             case NOOP:
                 break;
@@ -53,6 +51,7 @@ int main() {
             printf("Erro ao ler operação.\n");
             exit(1);
         }
+        // Sai do loop quando ler op == 6
     } while (op != EXIT);
 
     free(numbers);
@@ -67,6 +66,8 @@ void add(int** numbers, unsigned int* size) {
         exit(1);
     }
 
+    // Atualiza tamanho, realoca vetor de numeros, adiciona novo
+    // numero.
     *size = *size + 1;
     *numbers = (int*) realloc(*numbers, sizeof(int) * (*size));
     (*numbers)[(*size) - 1] = novo;
@@ -77,13 +78,20 @@ void pop(int** numbers, unsigned int* size) {
         return;
     }
 
+    // Reduz size, realoca vetor perdendo ultimo numero
     *size = *size - 1;
     *numbers = (int *) realloc(*numbers, sizeof(int) * (*size));
 }
 
 void list(int** numbers, unsigned int* size) {
-    for (int i = 0; i < *size; i++) {
-        printf("%d\n", (*numbers)[i]);
+    if (*size == 0) return;
+
+    // Printa antes para garantir que não termina em espaço
+    printf("%d", (*numbers)[0]);
+
+    // Printa espaco + cada um dos elementos
+    for (int i = 1; i < *size; i++) {
+        printf(" %d", (*numbers)[i]);
     }
 }
 
@@ -91,17 +99,19 @@ void abstract(int** numbers, unsigned int* size) {
     long int soma = 0;
     double media = 0;
 
+    // Soma tudo
     for (int i = 0; i < *size; i++) {
         soma += (*numbers)[i];
     }
 
+    // Usa soma para calcular media
     media = (float) soma / (float) *size;
 
-    printf("%ld\n", soma);
-    printf("%lf\n", media);
+    printf("%ld %lf\n", soma, media);
 }
 
 void sort(int** numbers, unsigned int* size) {
+    // Busca os menores valores e os puxa para o inicio do vetor
     for (int i = 0; i < *size; i++) {
         int min_value = numbers[0][i];
         int min_index = i;
