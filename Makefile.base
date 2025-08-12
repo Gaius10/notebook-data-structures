@@ -1,7 +1,12 @@
-build:
+build: clear
 	gcc src/main.c -o build/app -O3 -march=native -Wall
-run:
+
+run: ./build/app
 	./build/app
 
-zip:
+zip: clear
 	zip -r build/files.zip .
+
+clear:
+	rm -rf ./build/*
+
