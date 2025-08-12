@@ -108,7 +108,7 @@ void abstract(int** numbers, unsigned int* size) {
 
     // Usa soma para calcular media
     media = (float) soma / (float) *size;
-    printf("Soma = %ld, Média = %.2lf\n", soma, media);
+    printf("Soma = %ld, Media = %.2lf\n", soma, media);
 }
 
 void sort(int** numbers, unsigned int* size) {
