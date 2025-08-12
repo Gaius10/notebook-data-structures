@@ -26,7 +26,7 @@ int fatorial(int x) {
     }
 
     int y = x * fatorial(x - 1);
-    printf("Retornando fatorial(%d) = %d\n", x, y);
+    printf("Retornando de fatorial(%d) = %d\n", x, y);
 
     return y;
 }
