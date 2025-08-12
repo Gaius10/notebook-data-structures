@@ -9,7 +9,7 @@ int main() {
         return 1;
     }
 
-    printf("Calculando fatorial de 5...\n");
+    printf("Calculando fatorial de %d...\n", x);;
 
     int y = fatorial(x);
     printf("Resultado final: %d", y);
