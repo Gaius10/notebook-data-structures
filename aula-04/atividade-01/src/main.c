@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h>;
 
 #define ARR_MAX 1000
 
@@ -44,9 +44,11 @@ void merge_sort(int arr[], int start, int end) {
     int mid = (start + end) / 2;
 
     // Ordenar primeira metade
+    printf("DIVISAO[%d,%d]\n", start, mid);
     merge_sort(arr, start, mid);
 
     // Ordenar segunda metade
+    printf("DIVISAO[%d,%d]\n", mid, end);
     merge_sort(arr, mid, end);
 
     // Mesclar
@@ -87,6 +89,9 @@ void merge(int arr[], int start, int mid, int end) {
         arr[start + r + l] = right[r];
         r++;
     }
+
+    printf("INTERCALACAO [%d,%d] ", start, end);
+    printl(arr, start, end);
 }
 
 void printl(int arr[], int start, int end) {
