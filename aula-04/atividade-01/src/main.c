@@ -25,13 +25,7 @@ int main() {
         }
     }
 
-    // printf("Lista desordenada: ");
-    // printl(arr, 0, n);
-
     merge_sort(arr, 0, n);
-
-    // printf("List ordenada: ");
-    // printl(arr, 0, n);
 
     return 0;
 }

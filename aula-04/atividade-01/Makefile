@@ -1,3 +1,7 @@
+debug: clear
+	gcc src/main.c -o build/app-debug -g
+	lldb build/app-debug
+
 build: clear
 	gcc src/main.c -o build/app -O3 -march=native -Wall
 
@@ -9,4 +13,5 @@ zip: clear
 
 clear:
 	rm -rf ./build/*
+
 
