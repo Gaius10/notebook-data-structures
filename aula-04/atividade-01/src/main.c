@@ -39,7 +39,7 @@ int main() {
 void merge_sort(int arr[], int start, int end) {
     if (end - start <= 1) return;
 
-    printf("DIVISAO[%d,%d]\n", start, end);
+    printf("DIVISAO [%d,%d]\n", start, end);
 
     int mid = (start + end) / 2;
 
@@ -58,6 +58,7 @@ void merge(int arr[], int start, int mid, int end) {
 
     int l = 0;
     int r = 0;
+    int c = start;
 
     for (int i = start; i < mid; i++) {
         left[i-start] = arr[i];
@@ -69,22 +70,18 @@ void merge(int arr[], int start, int mid, int end) {
 
     while (l < left_len && r < right_len) {
         if (left[l] < right[r]) {
-            arr[start + r + l] = left[l];
-            l++;
+            arr[c++] = left[l++];
         } else {
-            arr[start + r + l] = right[r];
-            r++;
+            arr[c++] = right[r++];
         }
     }
 
-    while (l < mid - start) {
-        arr[start + r + l] = left[l];
-        l++;
+    while (l < left_len) {
+        arr[c++] = left[l++];
     }
 
-    while (r < end - mid) {
-        arr[start + r + l] = right[r];
-        r++;
+    while (r < right_len) {
+        arr[c++] = right[r++];
     }
 
     printf("INTERCALACAO [%d,%d] ", start, end);
