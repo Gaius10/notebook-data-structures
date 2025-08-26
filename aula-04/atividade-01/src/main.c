@@ -25,37 +25,34 @@ int main() {
         }
     }
 
-    printf("Lista desordenada: ");
-    printl(arr, 0, n);
+    // printf("Lista desordenada: ");
+    // printl(arr, 0, n);
 
     merge_sort(arr, 0, n);
 
-    printf("List ordenada: ");
-    printl(arr, 0, n);
+    // printf("List ordenada: ");
+    // printl(arr, 0, n);
 
     return 0;
 }
 
 void merge_sort(int arr[], int start, int end) {
-    printf("DIVISAO[%d,%d]\n", start, end);
-
-    // Caso base
     if (end - start <= 1) return;
 
-    // Calcular meio
+    printf("DIVISAO[%d,%d]\n", start, end - 1);
+
     int mid = (start + end) / 2;
 
-    // Ordenar primeira metade
     merge_sort(arr, start, mid);
-
-    // Ordenar segunda metade
     merge_sort(arr, mid, end);
 
-    // Mesclar
     merge(arr, start, mid, end);
 }
 
 void merge(int arr[], int start, int mid, int end) {
+    int left_len = mid - start;
+    int right_len = end - mid;
+
     int left[ARR_MAX];
     int right[ARR_MAX];
 
@@ -70,7 +67,7 @@ void merge(int arr[], int start, int mid, int end) {
         right[i-mid] = arr[i];
     }
 
-    while (l < mid - start && r < end - mid) {
+    while (l < left_len && r < right_len) {
         if (left[l] < right[r]) {
             arr[start + r + l] = left[l];
             l++;
