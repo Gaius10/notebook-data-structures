@@ -39,7 +39,7 @@ int main() {
 void merge_sort(int arr[], int start, int end) {
     if (end - start <= 1) return;
 
-    printf("DIVISAO[%d,%d]\n", start, end - 1);
+    printf("DIVISAO[%d,%d]\n", start, end);
 
     int mid = (start + end) / 2;
 
