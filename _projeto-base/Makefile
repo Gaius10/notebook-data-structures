@@ -1,12 +1,24 @@
-build: clear
-	gcc src/main.c -o build/app -O3 -march=native -Wall
 
-run: ./build/app
-	./build/app
+CC      := gcc
+CFLAGS  := -std=c11 -Wall -Wextra -Wpedantic -O3
+LDFLAGS :=
+LDLIBS  := -lm
+TARGET  := main
+OBJS    := build/main.o build/Ponto.o
 
-zip: clear
-	zip -r build/files.zip .
+.PHONY: all clean run
 
-clear:
-	rm -rf ./build/*
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) -o $@ $(LDLIBS)
+
+build/%.o: src/%.c lib/Ponto.h
+	$(CC) $(CFLAGS) -c $<
+
+run: $(TARGET)
+	./$(TARGET)
+
+clean:
+	rm -f $(OBJS) $(TARGET)
 
