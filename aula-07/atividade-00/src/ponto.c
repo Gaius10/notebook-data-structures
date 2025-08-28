@@ -13,7 +13,7 @@ Ponto* cria_ponto(float x, float y) {
     p->x = x;
     p->y = y;
 
-    return p;
+    return p;;
 }
 
 void libera_ponto(Ponto *p) {
@@ -73,8 +73,7 @@ void imprime_ponto(Ponto *p) {
         exit(1);
     }
 
-    printf("x = %f\n", p->x);
-    printf("y = %f\n", p->y);
+    printf("(%.3f,%.3f)\n", p->x, p->y);
 }
 
 int pontos_iguais(Ponto *p1, Ponto *p2) {
