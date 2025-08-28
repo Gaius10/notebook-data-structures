@@ -4,7 +4,7 @@ CFLAGS  := -std=c11 -Wall -Wextra -Wpedantic -O3
 LDFLAGS :=
 LDLIBS  := -lm
 TARGET  := main
-OBJS    := build/main.o build/Ponto.o
+OBJS    := build/main.o build/hello.o
 
 .PHONY: all clean run
 
@@ -13,8 +13,8 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o $@ $(LDLIBS)
 
-build/%.o: src/%.c lib/Ponto.h
-	$(CC) $(CFLAGS) -c $<
+build/%.o: src/%.c lib/hello.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 run: $(TARGET)
 	./$(TARGET)
