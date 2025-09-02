@@ -11,10 +11,21 @@
 #define OP_EXIT 5
 
 int main() {
+    // Lista de itens
     int arr[ARR_MAX];
     unsigned len = 0;
+
+    // Auxiliar para leitura de dados
     unsigned read = 0;
+
+    // Operacao
     unsigned op = 0;
+
+    // Item buscado
+    int search = 0;
+
+    // Posicao do item buscado
+    int position = 0;
 
     for (unsigned i = 0; i < ARR_MAX; i++) arr[i] = 0;
 
@@ -50,7 +61,19 @@ int main() {
 
                 break;
             case OP_SEQUENTIAL_SEARCH:
-                printf("Buscando sequencialmente...\n");
+                read = scanf("%d", &search);
+                if (read != 1) {
+                    printf("Erro ao ler item a ser procurado.\n");
+                    continue;
+                }
+
+                position = sequential_search(search, arr, len);
+                if (position != -1) {
+                    printf("SIM\n");
+                } else {
+                    printf("NAO\n");
+                }
+
                 break;
             case OP_BINARY_SEARCH:
                 printf("Fazendo busca binaria...\n");
