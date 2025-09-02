@@ -41,7 +41,13 @@ int main() {
 
         switch (op) {
             case OP_INVERT:
-                printf("Invertendo...\n");
+                invert(arr, len);
+
+                for (unsigned i = 0; i < len; i++) {
+                    printf("%d ", arr[i]);
+                }
+                printf("\n");
+
                 break;
             case OP_SEQUENTIAL_SEARCH:
                 printf("Buscando sequencialmente...\n");
@@ -53,7 +59,7 @@ int main() {
                 printf("Fazendo busca binaria recursiva...\n");
                 break;
             case OP_EXIT:
-                printf("Saindo...\n");
+                // printf("Saindo...\n");
                 break;
         }
     } while (op != OP_EXIT);

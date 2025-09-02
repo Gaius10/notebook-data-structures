@@ -7,8 +7,8 @@ void swap(int* item1, int* item2) {
 }
 
 void invert(int arr[], unsigned arr_len) {
-    for (unsigned i = 0; i < arr_len; i++) {
-        swap(&arr[i], &arr[arr_len - i]);
+    for (unsigned i = 0; i < (arr_len / 2); i++) {
+        swap(&arr[i], &arr[arr_len - i - 1]);
     }
 }
 
