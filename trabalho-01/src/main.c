@@ -76,10 +76,32 @@ int main() {
 
                 break;
             case OP_BINARY_SEARCH:
-                printf("Fazendo busca binaria...\n");
+                read = scanf("%d", &search);
+                if (read != 1) {
+                    printf("Erro ao ler item a ser procurado.\n");
+                    continue;
+                }
+
+                position = binary_search(search, arr, len);
+                if (position != -1) {
+                    printf("SIM\n");
+                } else {
+                    printf("NAO\n");
+                }
                 break;
             case OP_RECURSIVE_BINARY_SEARCH:
-                printf("Fazendo busca binaria recursiva...\n");
+                read = scanf("%d", &search);
+                if (read != 1) {
+                    printf("Erro ao ler item a ser procurado.\n");
+                    continue;
+                }
+
+                position = recursive_binary_search(search, arr, len);
+                if (position != -1) {
+                    printf("SIM\n");
+                } else {
+                    printf("NAO\n");
+                }
                 break;
             case OP_EXIT:
                 // printf("Saindo...\n");
