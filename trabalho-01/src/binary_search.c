@@ -2,12 +2,24 @@
 #include "../lib/actions.h"
 
 int binary_search(int search, int arr[], unsigned arr_len) {
-    printf("Bin search: %d %d", search, arr_len);
-    for (unsigned i = 0; i < arr_len; i++) {
-        printf(" %d", arr[i]);
-    }
-    printf("\n");
+    int start = 0;
+    int end = arr_len;
 
-    return 0;
+    int middle;
+
+    while (start < end) {
+        middle = (start + end) / 2;
+        if (arr[middle] == search) return middle;
+
+        if (search > arr[middle]) {
+            start = middle + 1;
+            end = end;
+        } else {
+            start = start;
+            end = middle;
+        }
+    }
+
+    return -1;
 }
 

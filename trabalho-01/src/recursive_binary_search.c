@@ -20,7 +20,7 @@ int rec_search(int search, int arr[], unsigned start, unsigned end) {
     unsigned new_end;
 
     if (arr[middle] > search) {
-        new_start = 0;
+        new_start = start;
         new_end = middle;
     } else {
         new_start = middle + 1;
