@@ -23,7 +23,7 @@ int rec_search(int search, int arr[], unsigned start, unsigned end) {
         new_start = 0;
         new_end = middle;
     } else {
-        new_start = middle;
+        new_start = middle + 1;
         new_end = end;
     }
 
