@@ -19,3 +19,7 @@ Obs.: não faltei, algumas aulas apenas não tiveram atividades associadas.
 
 - Tipos Abstratos de Dados (TADs);
 
+## Aula 8
+
+- Lista Sequencial Estática
+
