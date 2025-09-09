@@ -21,8 +21,8 @@ run: $(TARGET)
 
 clean:
 	rm -f $(OBJS) $(TARGET)
-
-bundle:
 	rm -f $(TARGET).zip
+
+bundle: clean
 	zip -r $(TARGET).zip Makefile src lib build
 

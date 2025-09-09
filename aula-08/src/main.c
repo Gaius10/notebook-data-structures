@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include "../lib/ssl.h"
 
@@ -22,8 +23,8 @@ int main() {
     unsigned read;
     int result, arg1, arg2;
 
-    SSL_Type* item_buffer = NULL;
-    unsigned* search_pos_buffer = NULL;
+    SSL_Type* item_buffer = malloc(sizeof(SSL_Type));
+    unsigned* search_pos_buffer = malloc(sizeof(unsigned));
 
     do {
         read = scanf("%u", &op);
@@ -41,7 +42,8 @@ int main() {
                 }
 
                 result = ssl_push(list, arg1);
-                // @todo tratar result
+                printf("%d\n", result);
+
                 break;
             case OP_INSERT:
                 read = scanf("%d %d", &arg1, &arg2);
@@ -51,7 +53,8 @@ int main() {
                 }
 
                 result = ssl_insert(list, arg1, arg2);
-                // @todo tratar result
+                printf("%d\n", result);
+
                 break;
             case OP_REMOVE:
                 read = scanf("%d", &arg1);
@@ -61,7 +64,6 @@ int main() {
                 }
 
                 result = ssl_remove(list, arg1, item_buffer);
-                // @todo tratar result
                 printf("%d\n", *item_buffer);
 
                 break;
@@ -73,9 +75,12 @@ int main() {
                 }
 
                 result = ssl_seek(list, arg1, item_buffer);
-                // @todo tratar result
-                printf("%d\n", *item_buffer);
+                if (result == -1) {
+                    printf("ERRO\n");
+                    continue;
+                }
 
+                printf("%d\n", *item_buffer);
                 break;
             case OP_SEARCH:
                 read = scanf("%d", &arg1);
@@ -85,7 +90,6 @@ int main() {
                 }
 
                 result = ssl_search(list, arg1, search_pos_buffer);
-                // @todo tratar result
                 printf("%d\n", *search_pos_buffer);
 
                 break;
@@ -94,16 +98,17 @@ int main() {
                 printf("%u\n", result);
                 break;
             case OP_PRINT:
-                ssl_print(list);
+                result = ssl_print(list);
                 break;
             case OP_CLEAR:
-                ssl_clear(list);
+                result = ssl_clear(list);
                 break;
         }
-
     } while (op != OP_EXIT);
 
     ssl_destroy(&list);
+    free(item_buffer);
+    free(search_pos_buffer);
     return 0;
 }
 

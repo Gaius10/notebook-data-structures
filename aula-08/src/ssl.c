@@ -93,8 +93,8 @@ int ssl_remove(SSL *l, unsigned pos, SSL_Type *item) {
 
     *item = l->items[pos];
 
-    for (unsigned i = l->len; i > pos; i++) {
-        l->items[i - 1] = i;
+    for (unsigned i = pos; i < l->len - 1; i++) {
+        l->items[i] = l->items[i + 1];
     }
 
     l->len--;
@@ -126,7 +126,8 @@ int ssl_search(const SSL *l, SSL_Type item, unsigned *pos) {
         }
     }
 
-    return 0;
+    *pos = -1;
+    return 1;
 }
 
 int ssl_clear(SSL *l) {
@@ -144,15 +145,16 @@ int ssl_print(const SSL *l) {
     }
 
     if (l->len == 0) {
-        return 0;
+        printf("[]\n");
+        return 1;
     }
 
-    printf("%d", l->items[0]);
+    printf("[%d", l->items[0]);
     for (unsigned i = 1; i < l->len; i++) {
-        printf(" %d", l->items[i]);
+        printf(", %d", l->items[i]);
     }
-    printf("\n");
+    printf("]\n");
 
-    return 0;
+    return 1;
 }
 
