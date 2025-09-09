@@ -61,6 +61,7 @@ int main(int argc, char* argv[]) {
             break;
     }
 
+    fclose(output_file);
     return 0;
 }
 
