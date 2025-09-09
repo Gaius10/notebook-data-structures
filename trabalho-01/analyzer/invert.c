@@ -18,5 +18,6 @@ void analysis_invert(
     for (unsigned i = 0; i < sample_quantities_len; i++) {
         fprintf(output_file, "%u ", sample_quantities[i]);
     }
+    fprintf(output_file, "\n");
 }
 
