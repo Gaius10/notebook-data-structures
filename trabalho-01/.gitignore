@@ -1,3 +1,4 @@
 main
 build/*
-!*/.gitkeep
+!build/app/.gitkeep
+!build/analyzer/.gitkeep

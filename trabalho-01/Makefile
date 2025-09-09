@@ -6,15 +6,13 @@ LDLIBS   := -lm
 TARGET   := main
 ANALYZER := analyzer
 
-TARGET_OBJS := \
-	build/app/main.o \
+TARGET_OBJS := build/app/main.o \
 	build/app/invert.o \
 	build/app/sequential_search.o \
 	build/app/binary_search.o \
 	build/app/recursive_binary_search.o
 
-ANALYZER_OBJS := \
-	build/analyzer/invert.o \
+ANALYZER_OBJS := build/analyzer/invert.o \
 	build/analyzer/sequential_search.o \
 	build/analyzer/binary_search.o \
 	build/analyzer/recursive_binary_search.o
