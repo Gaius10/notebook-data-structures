@@ -41,8 +41,8 @@ run: $(TARGET)
 
 clean:
 	rm -f build/app/* build/analyzer/* $(TARGET)
+	rm -f $(TARGET).zip
 
-bundle:
-	rm $(TARGET).zip
+bundle: clean
 	zip -r $(TARGET).zip Makefile src lib build
 
