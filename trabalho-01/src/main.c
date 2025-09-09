@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../lib/actions.h"
+#include "../lib/algorithms.h"
 
 #define ARR_MAX 1000
 

@@ -1,4 +1,4 @@
-#include "../lib/actions.h"
+#include "../lib/algorithms.h"
 
 void swap(int* item1, int* item2) {
     int aux = *item1;

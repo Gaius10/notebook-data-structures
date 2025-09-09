@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../lib/actions.h"
+#include "../lib/algorithms.h"
 
 int binary_search(int search, int arr[], unsigned arr_len) {
     int start = 0;

@@ -1,10 +1,10 @@
 
 CC       := gcc
-CFLAGS   := -std=c11 -Wall -Wextra -Wpedantic -O3
+CFLAGS   := -std=c11 -Wall -Wextra -O3
 LDFLAGS  :=
 LDLIBS   := -lm
 TARGET   := main
-ANALYZER := analyzer
+ANALYZER := ally
 
 TARGET_OBJS := \
 	build/app/main.o \
@@ -30,17 +30,17 @@ $(TARGET): $(TARGET_OBJS)
 $(ANALYZER): $(ANALYZER_OBJS)
 	$(CC) $(LDFLAGS) $(ANALYZER_OBJS) -o $@ $(LDLIBS)
 
-build/app/%.o: src/%.c lib/actions.h
+build/app/%.o: src/%.c lib/algorithms.h
 	$(CC) $(CFLAGS) -c $< -o $@
 	
-build/analyzer/%.o: analyzer/%.c lib/actions.h
+build/analyzer/%.o: analyzer/%.c lib/algorithms.h lib/analysis.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: $(TARGET)
 	./$(TARGET)
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f build/app/* build/analyzer/* $(TARGET)
 
 bundle:
 	rm $(TARGET).zip

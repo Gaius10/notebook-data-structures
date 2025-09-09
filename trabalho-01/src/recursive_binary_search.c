@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../lib/actions.h"
+#include "../lib/algorithms.h"
 
 int rec_search(int search, int arr[], unsigned start, unsigned end);
 
