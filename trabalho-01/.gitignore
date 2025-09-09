@@ -1,5 +1,6 @@
 main
 ally
-build/*
+build/app/*
+build/analyzer/*
 !build/app/.gitkeep
-!build/analyzer/.gitkeep
+!build/analyzer/.gitkeep;
