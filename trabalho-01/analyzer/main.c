@@ -17,10 +17,10 @@ int main(int argc, char* argv[]) {
 
     int op = *argv[1] - '0';
 
-    unsigned sample_quantities[4] = [10, 100, 1000, 5000];
+    unsigned sample_quantities[4] = {10, 100, 1000, 5000};
     unsigned sample_quantities_len = 4;
 
-    FILE* output_file = fopen(argv[2], 'w');
+    FILE* output_file = fopen(argv[2], "w");
     if (output_file == NULL) {
         printf("Erro ao abrir arquivo de saída.\n");
         return 1;
