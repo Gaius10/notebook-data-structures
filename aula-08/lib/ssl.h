@@ -17,13 +17,13 @@ int ssl_is_full(const SSL *l);
 int ssl_len(const SSL *l);
 
 int ssl_push(SSL *l, SSL_Type item);
-int ssl_insert_at(SSL *l, unsigned pos, SSL_Type item);
-int ssl_remove_index(SSL *l, unsigned pos, SSL_Type *item);
+int ssl_insert(SSL *l, unsigned pos, SSL_Type item);
+int ssl_remove(SSL *l, unsigned pos, SSL_Type *item);
 
 int ssl_seek(const SSL *l, unsigned pos, SSL_Type *item);
 int ssl_search(const SSL *l, SSL_Type item, unsigned *pos);
 
-int ssl_clean(SSL *l);
+int ssl_clear(SSL *l);
 int ssl_print(const SSL *l);
 
 #endif

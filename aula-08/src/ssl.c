@@ -63,7 +63,7 @@ int ssl_push(SSL *l, SSL_Type item) {
     return 1;
 }
 
-int ssl_insert_at(SSL *l, unsigned pos, SSL_Type item) {
+int ssl_insert(SSL *l, unsigned pos, SSL_Type item) {
     if (l == NULL) {
         return -1;
     }
@@ -82,7 +82,7 @@ int ssl_insert_at(SSL *l, unsigned pos, SSL_Type item) {
     return 1;
 }
 
-int ssl_remove_index(SSL *l, unsigned pos, SSL_Type *item) {
+int ssl_remove(SSL *l, unsigned pos, SSL_Type *item) {
     if (l == NULL) {
         return -1;
     }
@@ -129,7 +129,7 @@ int ssl_search(const SSL *l, SSL_Type item, unsigned *pos) {
     return 0;
 }
 
-int ssl_clean(SSL *l) {
+int ssl_clear(SSL *l) {
     if (l == NULL) {
         return -1;
     }
