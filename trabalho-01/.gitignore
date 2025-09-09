@@ -1,4 +1,5 @@
 main
+ally
 build/*
 !build/app/.gitkeep
 !build/analyzer/.gitkeep
