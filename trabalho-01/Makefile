@@ -6,13 +6,16 @@ LDLIBS   := -lm
 TARGET   := main
 ANALYZER := analyzer
 
-TARGET_OBJS := build/app/main.o \
+TARGET_OBJS := \
+	build/app/main.o \
 	build/app/invert.o \
 	build/app/sequential_search.o \
 	build/app/binary_search.o \
 	build/app/recursive_binary_search.o
 
-ANALYZER_OBJS := build/analyzer/invert.o \
+ANALYZER_OBJS := \
+	build/analyzer/main.o \
+	build/analyzer/invert.o \
 	build/analyzer/sequential_search.o \
 	build/analyzer/binary_search.o \
 	build/analyzer/recursive_binary_search.o
@@ -27,10 +30,10 @@ $(TARGET): $(TARGET_OBJS)
 $(ANALYZER): $(ANALYZER_OBJS)
 	$(CC) $(LDFLAGS) $(ANALYZER_OBJS) -o $@ $(LDLIBS)
 
-build/app/%.o: src/%.c lib/%.h
+build/app/%.o: src/%.c lib/actions.h
 	$(CC) $(CFLAGS) -c $< -o $@
 	
-build/analyzer/%.o: analyzer/%.c lib/%.h
+build/analyzer/%.o: analyzer/%.c lib/actions.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: $(TARGET)

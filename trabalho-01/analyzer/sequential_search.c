@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <sys/time.h>
-#include "../../lib/actions.h"
+#include "../lib/actions.h"
 
 #define ITERATIONS_NUMBER 1000
 
