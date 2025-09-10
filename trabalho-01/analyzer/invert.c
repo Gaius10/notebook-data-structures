@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <math.h>
 
@@ -12,11 +13,19 @@ void analysis_invert(
 ) {
     struct timespec start, end;
     long seconds, nanoseconds;
+    int sample[MAX_SAMPLE_LEN];
 
     for (unsigned i = 0; i < sample_quantities_len; i++) {
+        sample_len = sample_quantities[i];
+        for (unsigned j = 0; i < sample_len; j++) {
+            sample[j] = rand();
+        }
+
+        // @todo ordenar
+
         clock_gettime(CLOCK_MONOTONIC, &start);
 
-        for (unsigned j = 0; j < sample_quantities[i]; j++) {
+        for (unsigned j = 0; j < sample_len; j++) {
             // @todo act
         }
 
