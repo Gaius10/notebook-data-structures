@@ -3,8 +3,13 @@
 
 #define MAX_ITEMS 30
 
-void merge_sort(int arr[], unsigned len) {
-    sort(arr, 0, len - 1);
+void printl(int arr[], int start, int end);
+void merge_sort(int arr[], int start, int end);
+void sort(int arr[], int start, int end);
+void merge(int arr[], int start, int middle, int end);
+
+void merge_sort(int arr[], int start, int end) {
+    sort(arr, start, end);
 }
 
 void sort(int arr[], int start, int end) {

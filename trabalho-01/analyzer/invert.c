@@ -26,11 +26,11 @@ void analysis_invert(
 
         merge_sort(sample, sample_len);
 
-        clock_gettime(CLOCK_MONOTONIC, &start);
+        timespec_get(&start, TIME_UTC);
 
         invert(sample, sample_len);
 
-        clock_gettime(CLOCK_MONOTONIC, &end);
+        timespec_get(&end, TIME_UTC);
 
         seconds = end.tv_sec - start.tv_sec;
         nanoseconds = end.tv_nsec - start.tv_nsec;

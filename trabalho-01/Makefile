@@ -1,6 +1,6 @@
 
 CC       := clang
-CFLAGS   := -std=c2x -Wall -Wextra -O3
+CFLAGS   := -std=c2x -Wall -Wextra -Wpedantic -O3
 LDFLAGS  :=
 LDLIBS   := -lm
 TARGET   := main
