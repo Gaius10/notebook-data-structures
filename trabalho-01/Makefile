@@ -1,6 +1,6 @@
 
 CC       := clang
-CFLAGS   := -std=c2x -Wall -Wextra -Wpedantic -O3
+CFLAGS   := -std=c2x -Wall -Wextra -O3
 LDFLAGS  :=
 LDLIBS   := -lm
 TARGET   := main
@@ -15,6 +15,10 @@ TARGET_OBJS := \
 
 ANALYZER_OBJS := \
 	build/analyzer/main.o \
+	build/app/invert.o \
+	build/app/sequential_search.o \
+	build/app/binary_search.o \
+	build/app/recursive_binary_search.o \
 	build/analyzer/invert.o \
 	build/analyzer/sequential_search.o \
 	build/analyzer/binary_search.o \

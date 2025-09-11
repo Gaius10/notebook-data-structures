@@ -2,5 +2,7 @@ main
 ally
 build/app/*
 build/analyzer/*
+build/output/*
 !build/app/.gitkeep
-!build/analyzer/.gitkeep;
+!build/analyzer/.gitkeep
+!build/output/.gitkeep
