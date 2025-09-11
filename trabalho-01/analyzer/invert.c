@@ -5,6 +5,7 @@
 
 #include "../lib/analysis.h"
 #include "../lib/algorithms.h"
+#include "../lib/merge_sort.h"
 
 void analysis_invert(
     unsigned sample_quantities[],
@@ -13,26 +14,26 @@ void analysis_invert(
 ) {
     struct timespec start, end;
     long seconds, nanoseconds;
+
     int sample[MAX_SAMPLE_LEN];
+    unsigned sample_len;
 
     for (unsigned i = 0; i < sample_quantities_len; i++) {
         sample_len = sample_quantities[i];
-        for (unsigned j = 0; i < sample_len; j++) {
+        for (unsigned j = 0; j < sample_len; j++) {
             sample[j] = rand();
         }
 
-        // @todo ordenar
+        merge_sort(sample, sample_len);
 
         clock_gettime(CLOCK_MONOTONIC, &start);
 
-        for (unsigned j = 0; j < sample_len; j++) {
-            // @todo act
-        }
+        invert(sample, sample_len);
 
         clock_gettime(CLOCK_MONOTONIC, &end);
 
         seconds = end.tv_sec - start.tv_sec;
-        nanoseconds = end.tv_nsec - start.tv.nsec;
+        nanoseconds = end.tv_nsec - start.tv_nsec;
 
         if (nanoseconds < 0) {
             seconds -= 1;

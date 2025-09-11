@@ -1,6 +1,6 @@
 
-CC       := gcc
-CFLAGS   := -std=c11 -Wall -Wextra -O3
+CC       := clang
+CFLAGS   := -std=c2x -Wall -Wextra -O3
 LDFLAGS  :=
 LDLIBS   := -lm
 TARGET   := main
@@ -18,7 +18,8 @@ ANALYZER_OBJS := \
 	build/analyzer/invert.o \
 	build/analyzer/sequential_search.o \
 	build/analyzer/binary_search.o \
-	build/analyzer/recursive_binary_search.o
+	build/analyzer/recursive_binary_search.o \
+	build/analyzer/merge_sort.o
 
 .PHONY: all clean run
 
@@ -33,7 +34,7 @@ $(ANALYZER): $(ANALYZER_OBJS)
 build/app/%.o: src/%.c lib/algorithms.h
 	$(CC) $(CFLAGS) -c $< -o $@
 	
-build/analyzer/%.o: analyzer/%.c lib/algorithms.h lib/analysis.h
+build/analyzer/%.o: analyzer/%.c lib/algorithms.h lib/analysis.h lib/merge_sort.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: $(TARGET)

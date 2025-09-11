@@ -3,38 +3,11 @@
 
 #define MAX_ITEMS 30
 
-void merge_sort(int arr[], int start, int end);
-void merge(int arr[], int start, int middle, int end);
-void printl(int arr[], int start, int end);
-
-int main() {
-    int n = 0;
-    int read = 0;
-    int arr[MAX_ITEMS];
-
-    // Le numero de entradas
-    read = scanf("%d", &n);
-    if (read != 1) {
-        printf("Erro ao ler número de itens.\n");
-        return 1;
-    }
-
-    // Le entradas
-    for (int i = 0; i < n; i++) {
-        read = scanf("%d", &arr[i]);
-        if (read != 1) {
-            printf("Erro ao ler entrada %d.\n", i);
-            return 1;
-        }
-    }
-
-    // Faz a magica
-    merge_sort(arr, 0, n - 1);
-
-    return 0;
+void merge_sort(int arr[], unsigned len) {
+    sort(arr, 0, len - 1);
 }
 
-void merge_sort(int arr[], int start, int end) {
+void sort(int arr[], int start, int end) {
     if (start >= end) return;
 
     printf("DIVISAO [%d,%d]\n", start, end);
