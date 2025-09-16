@@ -23,3 +23,7 @@ Obs.: não faltei, algumas aulas apenas não tiveram atividades associadas.
 
 - Lista Sequencial Estática
 
+## Aula 9
+
+- Lista Sequencial Dinâmica
+
