@@ -27,9 +27,11 @@ void analysis_invert(
         merge_sort(sample, sample_len);
 
         timespec_get(&start, TIME_UTC);
-
+        /**********************
+         * CORE OF ANALYSIS
+         */
         invert(sample, sample_len);
-
+        /**********************/
         timespec_get(&end, TIME_UTC);
 
         seconds = end.tv_sec - start.tv_sec;
@@ -49,4 +51,3 @@ void analysis_invert(
         );
     }
 }
-
