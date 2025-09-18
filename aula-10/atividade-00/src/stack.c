@@ -57,7 +57,7 @@ int push(Stack *s, int value) {
 }
 
 int pop(Stack *s, int *value) {
-    if (s == NULL) {
+    if (s == NULL || value == NULL) {
         return -1;
     }
 
@@ -72,7 +72,7 @@ int pop(Stack *s, int *value) {
 }
 
 int peek(const Stack *s, int *value) {
-    if (s == NULL) {
+    if (s == NULL || value == NULL) {
         return -1;
     }
 
