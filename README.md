@@ -27,3 +27,7 @@ Obs.: não faltei, algumas aulas apenas não tiveram atividades associadas.
 
 - Lista Sequencial Dinâmica
 
+## Aula 10
+
+- Stacks
+
