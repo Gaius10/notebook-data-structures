@@ -1,7 +1,7 @@
 #ifndef ANALYSIS_H
 #define ANALYSIS_H
 
-#define MAX_SAMPLE_LEN 100000
+#define MAX_SAMPLE_LEN 10000
 
 void analysis_invert(
     unsigned sample_quantities[],
