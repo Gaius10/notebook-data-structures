@@ -15,8 +15,6 @@ void _merge_sort(int arr[], unsigned start, unsigned end) {
 
     unsigned middle = (start + end) / 2;
 
-    printf("middle = %d\n", middle);
-
     _merge_sort(arr, start, middle);
     _merge_sort(arr, middle + 1, end);
 
