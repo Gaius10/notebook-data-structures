@@ -13,7 +13,7 @@ typedef struct {
 Queue* create_queue(void);
 
 int insert(Queue *q, int value);
-int shift(Queue *q, int* value);
+int shift(Queue *q, int* buffer);
 
 void print_queue(Queue *q);
 void free_queue(Queue **q);
