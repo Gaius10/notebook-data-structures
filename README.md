@@ -30,4 +30,6 @@ Obs.: não faltei, algumas aulas apenas não tiveram atividades associadas.
 ## Aula 10
 
 - Stacks
+- Calculadora polonesa (usando stack)
+- Conversor de decimal para binario (usando stack)
 
