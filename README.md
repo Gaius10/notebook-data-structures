@@ -37,3 +37,7 @@ Obs.: não faltei, algumas aulas apenas não tiveram atividades associadas.
 
 - Filas
 
+## Aula 12
+
+- Listas encadeadas
+
