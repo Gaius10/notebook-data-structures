@@ -98,9 +98,9 @@ Node* cria() {
 }
 
 void inserir(Node* lista) {
-    unsigned success_buffer;
     unsigned pos;
     int value;
+    int success_buffer;
 
     success_buffer = scanf("%u", &pos);
     if (success_buffer != 1) {
@@ -122,9 +122,9 @@ void inserir(Node* lista) {
 }
 
 void remover(Node* lista) {
-    unsigned success_buffer;
-    unsigned pos;
+    int success_buffer;
     int value;
+    unsigned pos;
 
     success_buffer = scanf("%u", &pos);
     if (success_buffer != 1) {
