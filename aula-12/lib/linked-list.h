@@ -4,9 +4,9 @@
 
 #define LL_MAX_LEN 1000
 
-typedef struct {
+typedef struct Node {
     int value;
-    Node* next;
+    struct Node* next;
 } Node;
 
 Node* create(int value);

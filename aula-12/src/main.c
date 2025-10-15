@@ -13,8 +13,8 @@
 #define OP_EXIT 9
 
 Node* cria();
-void insere(Node* lista);
-void remove(Node* lista);
+void inserir(Node* lista);
+void remover(Node* lista);
 void append(Node* antes, Node* depois);
 
 int main() {
@@ -35,24 +35,24 @@ int main() {
             case OP_INSERT_LISTA_1:
                 if (lista1 == NULL) {
                     lista1 = cria();
-                    continue();
+                    continue;
                 }
 
-                insere(lista1);
+                inserir(lista1);
                 break;
             case OP_INSERT_LISTA_2:
                 if (lista2 == NULL) {
                     lista2 = cria();
-                    continue();
+                    continue;
                 }
 
-                insere(lista2);
+                inserir(lista2);
                 break;
             case OP_REMOVE_LISTA_1:
-                remove(lista1);
+                remover(lista1);
                 break;
             case OP_REMOVE_LISTA_2:
-                remove(lista2);
+                remover(lista2);
                 break;
             case OP_APPEND_LISTA_1:
                 append(lista1, lista2);
@@ -97,7 +97,7 @@ Node* cria() {
     return n;
 }
 
-void insere(Node* lista) {
+void inserir(Node* lista) {
     unsigned success_buffer;
     unsigned pos;
     int value;
@@ -121,7 +121,7 @@ void insere(Node* lista) {
     }
 }
 
-void remove(Node* lista) {
+void remover(Node* lista) {
     unsigned success_buffer;
     unsigned pos;
     int value;

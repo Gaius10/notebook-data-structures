@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../lib/linked-list.h"
 
 Node* create(int value) {
@@ -44,6 +45,7 @@ int remove_index(Node* n, unsigned pos, int* value) {
     }
 
     Node* before;
+    Node* target;
 
     unsigned counter = 0;
     while (counter++ < pos - 1) {
