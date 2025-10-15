@@ -72,9 +72,9 @@ int main() {
 
 Node* cria() {
     Node* n;
-    unsigned success_buffer;
-    unsigned index;
+    int success_buffer;
     int value;
+    unsigned index;
 
     success_buffer = scanf("%u", &index);
     if (success_buffer != 1) {
@@ -83,7 +83,7 @@ Node* cria() {
     }
 
     if (index != 0) {
-        printf("Não é possível inicializar uma lista pelo %u-ésimo elemento.\n");
+        printf("Não é possível inicializar uma lista pelo %u-ésimo elemento.\n", index);
         exit(1);
     }
 
