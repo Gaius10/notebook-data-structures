@@ -41,3 +41,6 @@ Obs.: não faltei, algumas aulas apenas não tiveram atividades associadas.
 
 - Listas encadeadas
 
+## Aula 15
+
+- Listas generalizadas
