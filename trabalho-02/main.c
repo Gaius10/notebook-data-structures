@@ -1,34 +1,70 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "bigint.h"
 
-static void cb(dec4_t value, void *) {
-    printf("%04d\n", dec4_to_uint16(value));
-}
+constexpr size_t BUFFER_SIZE = 1024;
 
 int main() {
-    /*
-    const char *original = "1923727384";
+    size_t n;
+
+    [[maybe_unused]]
+    int _;
+
+    _ = scanf("%zu ", &n);
+
+    char buffer[BUFFER_SIZE];
+
     [[gnu::cleanup(bigint_destroy)]]
-    bigint_t *bigint = bigint_create_from_string(original);
-    char *str = bigint_to_string(bigint);
+    bigint_t *result = bigint_create();
 
-    printf("%s\n%s\n", original, str);
+    if (result == nullptr) {
+        fprintf(stderr, "Erro ao criar bigint\n");
+        return 1;
+    }
 
-    free(str);
-    */
+    while (n > 0) {
+        if (fgets(buffer, BUFFER_SIZE - 1, stdin) == nullptr) {
+            fprintf(stderr, "Erro ao ler linha\n");
+            return 1;
+        }
 
-    const char *a = "4999";
+        const char *operator = strtok(buffer, " \n");
+        const char *lhs_raw = strtok(NULL, " \n");
+        const char *rhs_raw = strtok(NULL, " \n");
 
-    bigint_t *num_a = bigint_create_from_string(a);
-    char *str_a = bigint_to_string(num_a);
+        bigint_t *lhs = bigint_create_from_string(lhs_raw);
+        bigint_t *rhs = bigint_create_from_string(rhs_raw);
 
-    printf("%s\n%s\n", a, str_a);
+        printf("Resultado :: ");
 
-    free(str_a);
-    // bignum_to_string()
-    // dec4_from_string(a, cb, nullptr);
+        if (strcmp("soma", operator) == 0) {
+            bigint_zero(result);
+            bigint_status_t status = bigint_add(lhs, rhs, result);
+
+            if (status != BIGINT_STATUS_OK) {
+                fprintf(stderr, "Erro ao realizar soma\n");
+                return 1;
+            }
+
+            char *result_str = bigint_to_string(result);
+            printf("%s\n", result_str);
+            free(result_str);
+        } else {
+            int cmp = bigint_cmp(lhs, rhs);
+
+            if (strcmp("maior", operator) == 0) {
+                printf("%s\n", cmp > 0 ? "True" : "False");
+            } else if (strcmp("menor", operator) == 0) {
+                printf("%s\n", cmp < 0 ? "True" : "False");
+            } else if (strcmp("igual", operator) == 0) {
+                printf("%s\n", cmp == 0 ? "True" : "False");
+            }
+        }
+
+        n--;
+    }
 
     return 0;
 }
