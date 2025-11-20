@@ -34,7 +34,9 @@ int main() {
         const char *lhs_raw = strtok(NULL, " \n");
         const char *rhs_raw = strtok(NULL, " \n");
 
+        [[gnu::cleanup(bigint_destroy)]]
         bigint_t *lhs = bigint_create_from_string(lhs_raw);
+        [[gnu::cleanup(bigint_destroy)]]
         bigint_t *rhs = bigint_create_from_string(rhs_raw);
 
         printf("Resultado :: ");
