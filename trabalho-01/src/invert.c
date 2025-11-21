@@ -1,7 +1,7 @@
 #include "../lib/algorithms.h"
 
-void swap(int* item1, int* item2) {
-    int aux = *item1;
+inline void swap(int* restrict item1, int* restrict item2) {
+    const int aux = *item1;
     *item1 = *item2;
     *item2 = aux;
 }
@@ -11,4 +11,3 @@ void invert(int arr[], unsigned arr_len) {
         swap(&arr[i], &arr[arr_len - i - 1]);
     }
 }
-

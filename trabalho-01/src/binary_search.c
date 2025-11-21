@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "../lib/algorithms.h"
 
 int binary_search(int search, int arr[], unsigned arr_len) {
@@ -13,13 +12,10 @@ int binary_search(int search, int arr[], unsigned arr_len) {
 
         if (search > arr[middle]) {
             start = middle + 1;
-            end = end;
         } else {
-            start = start;
             end = middle;
         }
     }
 
     return -1;
 }
-

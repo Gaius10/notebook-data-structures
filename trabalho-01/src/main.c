@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "../lib/algorithms.h"
 
 #define ARR_MAX 1000
@@ -12,7 +13,7 @@
 
 int main() {
     // Lista de itens
-    int arr[ARR_MAX];
+    int *arr;
     unsigned len = 0;
 
     // Auxiliar para leitura de dados
@@ -27,11 +28,15 @@ int main() {
     // Posicao do item buscado
     int position = 0;
 
-    for (unsigned i = 0; i < ARR_MAX; i++) arr[i] = 0;
-
     read = scanf("%u", &len);
     if (read != 1) {
         printf("Erro ao ler tamanho da lista.\n");
+        return 1;
+    }
+
+    arr = calloc(len, sizeof(int));
+    if (!arr) {
+        printf("Erro ao alocar memoria.\n");
         return 1;
     }
 
@@ -108,5 +113,6 @@ int main() {
                 break;
         }
     } while (op != OP_EXIT);
-}
 
+    free(arr);
+}

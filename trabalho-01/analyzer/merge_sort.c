@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_ITEMS 30
-
 void _merge_sort(int arr[], unsigned start, unsigned end);
 void _merge(int arr[], unsigned start, unsigned middle, unsigned end);
 
@@ -27,8 +25,8 @@ void _merge(int arr[], unsigned start, unsigned middle, unsigned end) {
     unsigned right_len = end - middle;
 
     // Vetores auxiliares
-    int left[MAX_ITEMS];
-    int right[MAX_ITEMS];
+    int left[left_len];
+    int right[right_len];
 
     // Contadores
     unsigned l = 0;
@@ -37,7 +35,6 @@ void _merge(int arr[], unsigned start, unsigned middle, unsigned end) {
 
     // Inicializa vetores auxiliares
     for (unsigned i = 0; i < left_len; i++) {
-        printf("start = %d, i = %d\n", start, i);
         left[i] = arr[start + i];
     }
 

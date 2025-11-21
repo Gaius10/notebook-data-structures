@@ -4,8 +4,8 @@
 
 void invert(int arr[], unsigned arr_len);
 int sequential_search(int search, int arr[], unsigned arr_len);
+int sequential_search_ordered(int search, int arr[], unsigned arr_len);
 int binary_search(int search, int arr[], unsigned arr_len);
 int recursive_binary_search(int search, int arr[], unsigned arr_len);
 
 #endif
-

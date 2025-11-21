@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "../lib/algorithms.h"
 
 int rec_search(int search, int arr[], unsigned start, unsigned end);
@@ -29,4 +28,3 @@ int rec_search(int search, int arr[], unsigned start, unsigned end) {
 
     return rec_search(search, arr, new_start, new_end);
 }
-

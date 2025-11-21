@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "../lib/algorithms.h"
 
 int sequential_search(int search, int arr[], unsigned int arr_len) {
@@ -8,4 +7,3 @@ int sequential_search(int search, int arr[], unsigned int arr_len) {
 
     return -1;
 }
-
