@@ -4,7 +4,7 @@
 
 #include "bigint.h"
 
-constexpr size_t BUFFER_SIZE = 1024;
+#define BUFFER_SIZE 1024
 
 int main() {
     size_t n;
@@ -19,13 +19,13 @@ int main() {
     [[gnu::cleanup(bigint_destroy)]]
     bigint_t *result = bigint_create();
 
-    if (result == nullptr) {
+    if (result == NULL) {
         fprintf(stderr, "Erro ao criar bigint\n");
         return 1;
     }
 
     while (n > 0) {
-        if (fgets(buffer, BUFFER_SIZE - 1, stdin) == nullptr) {
+        if (fgets(buffer, BUFFER_SIZE - 1, stdin) == NULL) {
             fprintf(stderr, "Erro ao ler linha\n");
             return 1;
         }
