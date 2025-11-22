@@ -39,6 +39,7 @@ int main() {
 
         [[gnu::cleanup(bigint_destroy)]]
         bigint_t *lhs = bigint_create_from_string(lhs_raw);
+
         [[gnu::cleanup(bigint_destroy)]]
         bigint_t *rhs = bigint_create_from_string(rhs_raw);
 
