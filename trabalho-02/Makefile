@@ -1,4 +1,4 @@
-CC       := clang
+CC       := gcc
 CFLAGS   := -std=c2x -Wall -Wextra -pedantic -O3
 LDFLAGS  :=
 LDLIBS   :=

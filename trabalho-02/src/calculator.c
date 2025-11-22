@@ -81,6 +81,8 @@ bigint_status_t bigint_add(
 
         return BIGINT_STATUS_OK;
     }
+
+    return BIGINT_STATUS_OK;
 }
 
 int bigint_cmp(const bigint_t *num_a, const bigint_t *num_b) {
