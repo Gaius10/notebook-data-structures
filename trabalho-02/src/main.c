@@ -6,6 +6,7 @@
 #include <string.h>
 
 #include "../lib/bigint.h"
+#include "../lib/calculator.h"
 
 #define BUFFER_SIZE 1024
 

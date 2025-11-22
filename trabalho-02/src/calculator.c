@@ -1,8 +1,23 @@
 
 #include "../lib/bigint.h"
 
+struct AddData {
+    bigint_t *result;
+    size_t leading_zeros;
+    int8_t carry;
+    int8_t sign_a, sign_b;
+};
+
+struct CmpData {
+    int8_t carry;
+    bool zero;
+    int8_t sign_a, sign_b;
+};
+
 static void aux_add_cb(uint8_t a, uint8_t b, void *raw_data);
 static void aux_sub_cb(uint8_t a, uint8_t b, void *raw_data);
+static void aux_cmp_cb(uint8_t a, uint8_t b, void *raw_data);
+static int aux_cmp(const bigint_t *a, const bigint_t *b, bool abs);
 
 bigint_status_t bigint_add(
     const bigint_t *num_a,
@@ -19,22 +34,41 @@ bigint_status_t bigint_add(
 
     if (num_a->sign == 0) {
         bigint_copy(result, num_b);
-    } else if (num_b->sign == 0) {
+        return BIGINT_STATUS_OK;
+    }
+
+    if (num_b->sign == 0) {
         bigint_copy(result, num_a);
-    } else if (num_a->sign != num_b->sign &&
-               (num_a->sign < 0 || num_b->sign < 0)) {
+        return BIGINT_STATUS_OK;
+    }
+
+    if (num_a->sign == num_b->sign) {
+        bigint_iter2(num_a, num_b, aux_add_cb, &data);
+        result->sign = num_a->sign;
+
+        if (data.carry != 0) {
+            bigint_push_high_digit(result, data.carry);
+        }
+
+        return BIGINT_STATUS_OK;
+    }
+
+    if (num_a->sign != num_b->sign) {
         int8_t cmp = aux_cmp(num_a, num_b, true);
 
-        // se |num_a| > |num_b|
-        if (cmp > 0) {
-            bigint_iter2(num_a, num_b, aux_sub_cb, &data);
-            result->sign = num_a->sign;
-        } else if (cmp < 0) {
-            bigint_iter2(num_b, num_a, aux_sub_cb, &data);
-            result->sign = num_b->sign;
-        } else {
+        if (cmp == 0) { // a == b
             bigint_zero(result);
             return BIGINT_STATUS_OK;
+        }
+
+        if (cmp > 0) {
+            // a > b
+            bigint_iter2(num_a, num_b, aux_sub_cb, &data);
+            result->sign = num_a->sign;
+        } else {
+            // a < b
+            bigint_iter2(num_b, num_a, aux_sub_cb, &data);
+            result->sign = num_b->sign;
         }
 
         if (data.carry != 0) {
@@ -44,19 +78,11 @@ bigint_status_t bigint_add(
                 bigint_pop_high_digit(result, NULL);
             }
         }
-    } else {
-        bigint_iter2(num_a, num_b, aux_add_cb, &data);
-        result->sign = num_a->sign;
 
-        if (data.carry != 0) {
-            bigint_push_high_digit(result, data.carry);
-        }
+        return BIGINT_STATUS_OK;
     }
-
-    return BIGINT_STATUS_OK;
 }
 
-static void aux_cmp_cb(uint8_t a, uint8_t b, void *raw_data) {
 int bigint_cmp(const bigint_t *num_a, const bigint_t *num_b) {
     return aux_cmp(num_a, num_b, false);
 }
@@ -97,8 +123,6 @@ static void aux_add_cb(uint8_t digit_a, uint8_t digit_b, void *raw_data) {
     bigint_push_high_digit(data->result, sum);
 }
 
-
-static void aux_cmp_cb(uint8_t a, uint8_t b, void *raw_data);
 static int aux_cmp(const bigint_t *num_a, const bigint_t *num_b, bool abs) {
     if (abs) {
         struct CmpData data = {.carry = 0, .zero = 1, .sign_a = 1, .sign_b = 1};

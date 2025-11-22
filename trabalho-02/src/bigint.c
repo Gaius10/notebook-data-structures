@@ -3,29 +3,11 @@
 
 #include "../lib/bigint.h"
 
-struct node {
-    uint8_t digits[4];
-    struct node *next;
-};
 
-struct bigint {
-    struct node *high, *low;
-    size_t length;
-    int8_t sign;
-};
+/** Funções auxiliares (implementação no final do arquivo) */
 
-struct AddData {
-    bigint_t *result;
-    size_t leading_zeros;
-    int8_t carry;
-    int8_t sign_a, sign_b;
-};
-
-struct CmpData {
-    int8_t carry;
-    bool zero;
-    int8_t sign_a, sign_b;
-};
+static void aux_zero(uint8_t digits[]);
+static void aux_copy(uint8_t dest[], const uint8_t src[]);
 
 /***********************
  * Criacao e destruição
@@ -277,9 +259,6 @@ void bigint_iter(const bigint_t *num, void (*callback)(uint8_t, void *),
         current = current->next;
     }
 }
-
-static void aux_zero(uint8_t digits[]);
-static void aux_copy(uint8_t dest[], const uint8_t src[]);
 
 void bigint_iter2(const bigint_t *num_a, const bigint_t *num_b,
                   void (*callback)(uint8_t, uint8_t, void *), void *userdata) {

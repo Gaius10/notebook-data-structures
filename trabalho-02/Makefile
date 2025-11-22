@@ -3,7 +3,7 @@ CFLAGS   := -std=c2x -Wall -Wextra -pedantic -O3
 LDFLAGS  :=
 LDLIBS   :=
 TARGET   := main
-TARGET_OBJS := build/main.o build/bigint.o
+TARGET_OBJS := build/main.o build/bigint.o build/calculator.o
 
 .PHONY: all clean run
 
@@ -12,7 +12,7 @@ all: $(TARGET)
 $(TARGET): $(TARGET_OBJS)
 	$(CC) $(LDFLAGS) $(TARGET_OBJS) -o $@ $(LDLIBS)
 
-build/%.o: src/%.c lib/bigint.h
+build/%.o: src/%.c lib/bigint.h lib/calculator.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: $(TARGET)
