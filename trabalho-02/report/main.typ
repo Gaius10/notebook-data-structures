@@ -52,15 +52,15 @@ AMD Ryzen™ 5 5600G with Radeon™ Graphics × 12 @ 3.90 GHz
 
 = Metodologia
 
-- Por que foi escolhida essa estrutura e não outra?
-- Como ela resolve o problema?
-- Como foi a implementação?
-- Quais as suas limitações?
-- Quais as dificuldades encontradas ao longo da solução?
+Para resolução do problema das representações de grandes números, foi implementado, conforme orientado pelo enunciado, um TAD baseado na estrutura de lista encadeada. Dessa forma, podemos representar números de qualquer tamanho, uma vez que a única limitação para o tamanho da lista encadeada é a própria memória do computador.
+
+Outra limitação do TAD implementado, entretanto, é a inacessibilidade direta à algarismos específicos do número representado, uma vez que a lista encadeada exige que todos os elementos anteriores sejam processados.
+
+Os desafios da implementação se deram principalmente em relação à elaboração da lógica de adição e subtração dos grandes números. Em especial no caso da subtração, onde é essencial um conhecimento prévio a respeito de qual dos operandos é maior, exigindo assim um maior processamento prévio à operação.
 
 = Conclusão
 
-- 
+O TAD, apesar das dificuldades de implementação, se mostrou uma solução eficiente para a representação e operação de números de alta ordem, uma vez que contorna a limitação dos tipos primitivos e ainda permite que operações complexas sejam realizadas.
 
 = Participações
 == Vinicius Henrique P. Giroto
