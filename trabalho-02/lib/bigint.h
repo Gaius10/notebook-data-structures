@@ -4,7 +4,16 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-typedef struct bigint bigint_t;
+struct node {
+    uint8_t digits[4];
+    struct node *next;
+};
+
+typedef struct bigint {
+    struct node *high, *low;
+    size_t length;
+    int8_t sign;
+} bigint_t;
 
 typedef enum {
     BIGINT_STATUS_OK,
@@ -23,7 +32,7 @@ bigint_t* bigint_create(void);
 bigint_t* bigint_create_from_string(const char *str);
 
 [[gnu::nonnull]]
-bigint_status_t bigint_copy(bigint* target, const bigint_t* source);
+bigint_status_t bigint_copy(bigint_t* target, const bigint_t* source);
 
 [[gnu::nonnull]]
 void bigint_destroy(bigint_t **num);
