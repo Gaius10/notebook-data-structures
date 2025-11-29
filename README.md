@@ -44,3 +44,7 @@ Obs.: não faltei, algumas aulas apenas não tiveram atividades associadas.
 ## Aula 15
 
 - Listas generalizadas
+
+## Aula 18
+
+- Arvores binárias de busca
