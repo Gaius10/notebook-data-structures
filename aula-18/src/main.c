@@ -32,5 +32,7 @@ int main() {
     tree_print(tree, TREE_PREORDER);
     tree_print(tree, TREE_INORDER);
     tree_print(tree, TREE_POSTORDER);
+
+    printf("%u\n", tree_height(tree));
     tree_destroy(tree);
 }
